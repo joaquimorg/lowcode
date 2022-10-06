@@ -1,21 +1,16 @@
-import { createApp } from 'vue'
+import '@/plugins/vue-composition-api'
+import '@/styles/styles.scss'
+import Vue from 'vue'
 import App from './App.vue'
+import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
 
-import CoreuiVue from '@coreui/vue'
-import CIcon from '@coreui/icons-vue'
-import { iconsSet as icons } from '@/assets/icons'
-import DocsCallout from '@/components/DocsCallout'
-import DocsExample from '@/components/DocsExample'
+Vue.config.productionTip = false
 
-const app = createApp(App)
-app.use(store)
-app.use(router)
-app.use(CoreuiVue)
-app.provide('icons', icons)
-app.component('CIcon', CIcon)
-app.component('DocsCallout', DocsCallout)
-app.component('DocsExample', DocsExample)
-
-app.mount('#app')
+new Vue({
+  router,
+  store,
+  vuetify,
+  render: h => h(App),
+}).$mount('#app')
